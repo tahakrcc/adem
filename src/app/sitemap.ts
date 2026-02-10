@@ -1,5 +1,7 @@
 import { MetadataRoute } from 'next';
 
+export const dynamic = 'force-static';
+
 export default function sitemap(): MetadataRoute.Sitemap {
     // LÜTFEN DİKKAT: Siteyi yayına aldığınızda bu adresi kendi alan adınızla (domain) değiştirin.
     // Örnek: 'https://www.akdalgicpompa.com'
