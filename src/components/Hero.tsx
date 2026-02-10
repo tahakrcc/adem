@@ -6,10 +6,10 @@ import Link from 'next/link';
 import { useRef, useState, useEffect } from 'react';
 
 const heroImages = [
-    "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&q=80&w=1920", // Tech/Blue
-    "https://images.unsplash.com/photo-1581092921461-eab62e97a780?auto=format&fit=crop&q=80&w=1920", // Industrial
-    "https://images.unsplash.com/photo-1497436072909-60f360e1d4b0?auto=format&fit=crop&q=80&w=1920", // Water/Blue
-    "https://images.unsplash.com/photo-1585314062340-f1a5a7c9328d?auto=format&fit=crop&q=80&w=1920", // Pump Detail
+    "/images/hero/temizsu.jpg", // Water/Clean Water
+    "/images/hero/hidroforendustriyel.png", // Industrial Hydrofor
+    "/images/hero/hidroforsanayi.png", // Industrial System
+    "/images/hero/pompa detay.jpeg", // Pump Detail
 ];
 
 const Hero = () => {
@@ -73,7 +73,7 @@ const Hero = () => {
                         initial={{ opacity: 0, x: -20 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ delay: 0.2 }}
-                        className="flex items-center justify-center md:justify-start gap-3"
+                        className="flex items-center justify-center md:justify-start gap-3 mb-6 md:mb-8"
                     >
                         <div className="h-[2px] w-8 md:w-12 bg-secondary shadow-[0_0_10px_rgba(245,158,11,0.5)]"></div>
                         <span className="text-secondary font-bold tracking-[0.2em] text-xs md:text-sm uppercase drop-shadow-md">
@@ -85,14 +85,14 @@ const Hero = () => {
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.3, duration: 0.8 }}
-                        className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black leading-tight tracking-tighter"
+                        className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black leading-tight tracking-tighter"
                     >
-                        AK <br />
+                        AK HİDROFOR <br />
                         <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-400 drop-shadow-lg">
-                            DALGIÇ
+                            DALGIÇ POMPA
                         </span> <br />
                         <span className="text-shine drop-shadow-lg">
-                            POMPA
+                            VE MEKANİK
                         </span>
                     </motion.h1>
 

@@ -1,5 +1,7 @@
 'use client';
 
+import Link from 'next/link';
+
 import { Settings, Droplets, Gauge, Wrench, Activity, Anchor, Home as HomeIcon, MapPin, ShieldCheck, Truck, Zap } from 'lucide-react';
 import Navbar from '@/components/Navbar';
 import Hero from '@/components/Hero';
@@ -10,21 +12,21 @@ import ServiceCard from '@/components/ServiceCard'; // Updated Import
 import { motion } from 'framer-motion';
 
 export default function Home() {
-  // Unsplash placeholders for realistic industrial look
+  // Local hidrofor service images
   const hidroforImages = [
-    "https://images.unsplash.com/photo-1581092921461-eab62e97a780?auto=format&fit=crop&q=80&w=800", // Industrial pipes
-    "https://images.unsplash.com/photo-1535315802100-3b036ca6d5f7?auto=format&fit=crop&q=80&w=800", // Machinery (New)
-    "https://images.unsplash.com/photo-1517420879524-86d64ac2f339?auto=format&fit=crop&q=80&w=800", // Gauge (Replaced - just to be safe)
-    "https://images.unsplash.com/photo-1581092160562-40aa08e78837?auto=format&fit=crop&q=80&w=800", // Tools/Mechanic (New)
-    "https://images.unsplash.com/photo-1631553835694-82559eb56860?auto=format&fit=crop&q=80&w=800", // Electrical Panel/Board (New - for Pano Tamiri)
-    "https://images.unsplash.com/photo-1621905251918-48416bd8575a?auto=format&fit=crop&q=80&w=800", // Worker/Maintenance (New - for Periyodik Bakım)
+    "/images/services/hidrofor/hidroforkurulum.jpeg", // Hidrofor kurulum
+    "/images/services/hidrofor/genlesmetanki.jpeg", // Genleşme tankı
+    "/images/services/hidrofor/basincgosterge.jpeg", // Basınç göstergesi
+    "/images/services/hidrofor/mekanikkece.jpeg", // Mekanik keçe
+    "/images/services/hidrofor/elektrik panosu.jpeg", // Elektrik panosu
+    "/images/services/hidrofor/periyodik bakim.jpeg", // Periyodik bakım
   ];
 
   const pumpImages = [
-    "https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&q=80&w=800", // Drilling/Ground
-    "https://images.unsplash.com/photo-1585314062340-f1a5a7c9328d?auto=format&fit=crop&q=80&w=800", // Water/Pump
-    "https://images.unsplash.com/photo-1562774053-701939374585?auto=format&fit=crop&q=80&w=800", // Coil/Motor
-    "https://images.unsplash.com/photo-1558346490-a72e53ae2d4f?auto=format&fit=crop&q=80&w=800", // Cables/Wires (New)
+    "/images/services/pompa/sondaj.jpeg", // Kuyu sondaj
+    "/images/services/pompa/kurulum .jpeg", // Pompa montaj
+    "/images/services/pompa/motorsarım.jpeg", // Motor sarım
+    "/images/services/pompa/kablolamaelektrik.jpeg", // Kablo izolasyon
   ];
 
 
@@ -32,7 +34,7 @@ export default function Home() {
     { title: 'HİDROFOR KURULUMU', description: 'Yüksek verimli sistemlerle kesintisiz su basıncı garantisi.', imageSrc: hidroforImages[0] },
     { title: 'GENLEŞME TANKI', description: 'Patlak membran değişimi ve optimum basınç ayarları.', imageSrc: hidroforImages[1] },
     { title: 'BASINÇ AYARI', description: 'Enerji tasarrufu sağlayan hassas kalibrasyon hizmeti.', imageSrc: hidroforImages[2] },
-    { title: 'MEKANİK KEÇE', description: 'Su kaçaklarına karşı %100 sızdırmazlık çözümleri.', imageSrc: hidroforImages[3] }, // Assuming tool/worker image fit better conceptually or placeholder
+    { title: 'ÜRÜNLERİMİZ', description: 'Yüksek kaliteli hidrofor ve pompa ekipmanları.', imageSrc: hidroforImages[3] },
     { title: 'PANO TAMİRİ', description: 'Otomasyon arızalarının yerinde ve hızlı onarımı.', imageSrc: hidroforImages[4] },
     { title: 'PERİYODİK BAKIM', description: 'Sistemin ömrünü uzatan yıllık detaylı kontroller.', imageSrc: hidroforImages[5] },
   ];
@@ -165,18 +167,41 @@ export default function Home() {
 
       {/* Footer */}
       <footer className="bg-black py-12 border-t border-white/10">
-        <div className="container mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-6">
-          <div className="text-center md:text-left">
-            <h4 className="font-black text-2xl tracking-tighter">AK DALGIÇ POMPA</h4>
+        <div className="container mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left">
+
+          {/* Brand & Copyright */}
+          <div>
+            <h4 className="font-black text-2xl tracking-tighter text-white">AK DALGIÇ POMPA</h4>
             <p className="text-xs text-muted-foreground mt-2">
               &copy; {new Date().getFullYear()} Tüm hakları saklıdır.
             </p>
+            <p className="text-xs text-muted-foreground mt-1">
+              Malatya'nın Güvenilir Su Çözümleri
+            </p>
           </div>
-          <div className="flex gap-8 text-sm text-muted-foreground font-medium uppercase tracking-wider">
-            <a href="#" className="hover:text-white transition-colors">Ana Sayfa</a>
-            <a href="#services" className="hover:text-white transition-colors">Hizmetler</a>
-            <a href="#contact" className="hover:text-white transition-colors">İletişim</a>
+
+          {/* Quick Links */}
+          <div className="flex flex-col gap-2">
+            <h5 className="font-bold text-white mb-2 uppercase tracking-wider text-sm">Hızlı Erişim</h5>
+            <a href="#" className="text-sm text-muted-foreground hover:text-white transition-colors">Ana Sayfa</a>
+            <a href="#services" className="text-sm text-muted-foreground hover:text-white transition-colors">Hizmetler</a>
+            <a href="#contact" className="text-sm text-muted-foreground hover:text-white transition-colors">İletişim</a>
           </div>
+
+          {/* Corporate Links (KVKK & Privacy) */}
+          <div className="flex flex-col gap-2">
+            <h5 className="font-bold text-white mb-2 uppercase tracking-wider text-sm">Kurumsal</h5>
+            <Link href="/kvkk" className="text-sm text-muted-foreground hover:text-secondary transition-colors">
+              KVKK Aydınlatma Metni
+            </Link>
+            <Link href="/gizlilik-politikasi" className="text-sm text-muted-foreground hover:text-secondary transition-colors">
+              Gizlilik Politikası
+            </Link>
+            <a href="tel:05433363944" className="text-sm text-muted-foreground hover:text-white transition-colors mt-2">
+              Destek: 0543 336 39 44
+            </a>
+          </div>
+
         </div>
       </footer>
     </main>

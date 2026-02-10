@@ -4,6 +4,8 @@ import { motion } from 'framer-motion';
 import { Phone, MapPin, Mail, Clock } from 'lucide-react';
 
 const Contact = () => {
+    const mapsLink = "https://maps.app.goo.gl/9rUuDM28tETWo1468";
+
     // New Contact Info
     const contactInfo = [
         {
@@ -11,24 +13,29 @@ const Contact = () => {
             title: "KEREM AKARSLAN",
             details: ["+90 543 336 39 44"],
             color: "text-secondary",
+            link: "tel:05433363944"
         },
         {
             icon: MapPin,
             title: "MERKEZ",
             details: ["Yeşiltepe Yolu No: 28", "Yeşilyurt / MALATYA", "(Çavuşoğlu Mh.)"],
             color: "text-primary",
+            link: mapsLink,
+            target: "_blank"
         },
         {
             icon: Mail,
             title: "E-POSTA",
             details: ["keremakarslan4@gmail.com"],
             color: "text-white",
+            link: "mailto:keremakarslan4@gmail.com"
         },
         {
             icon: Clock,
             title: "ACİL SERVİS",
             details: ["7/24 Kesintisiz Hizmet"],
             color: "text-red-500",
+            link: "tel:05433363944"
         },
     ];
 
@@ -54,10 +61,13 @@ const Contact = () => {
                     {/* Cards */}
                     <div className="lg:col-span-1 grid grid-cols-1 gap-4">
                         {contactInfo.map((item, index) => (
-                            <motion.div
+                            <motion.a
                                 key={index}
+                                href={item.link}
+                                target={item.target}
+                                rel={item.target ? "noopener noreferrer" : undefined}
                                 whileHover={{ x: 10 }}
-                                className="bg-white/5 p-6 border-l-2 border-white/10 hover:border-secondary hover:bg-white/10 transition-all group"
+                                className="block bg-white/5 p-6 border-l-2 border-white/10 hover:border-secondary hover:bg-white/10 transition-all group"
                             >
                                 <div className="flex items-start gap-4">
                                     <div className={`mt-1 ${item.color}`}>
@@ -66,27 +76,38 @@ const Contact = () => {
                                     <div>
                                         <h3 className="text-sm font-bold tracking-wider text-white uppercase mb-1">{item.title}</h3>
                                         {item.details.map((detail, idx) => (
-                                            <p key={idx} className="text-muted-foreground text-sm">{detail}</p>
+                                            <p key={idx} className="text-muted-foreground text-sm group-hover:text-white transition-colors">{detail}</p>
                                         ))}
                                     </div>
                                 </div>
-                            </motion.div>
+                            </motion.a>
                         ))}
                     </div>
 
                     {/* Map */}
-                    <div className="lg:col-span-2 min-h-[400px] bg-white/5 relative group overflow-hidden">
+                    <div className="lg:col-span-2 min-h-[400px] bg-white/5 relative group overflow-hidden rounded-2xl border border-white/10">
+                        {/* Clickable Overlay */}
+                        <a
+                            href={mapsLink}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="absolute inset-0 z-20 flex items-center justify-center bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                        >
+                            <div className="bg-secondary text-white px-6 py-3 rounded-full font-bold shadow-lg transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300 flex items-center gap-2">
+                                <MapPin size={20} />
+                                Haritada Görüntüle
+                            </div>
+                        </a>
+
                         <iframe
-                            // Approximate location for Yeşiltepe Yolu No: 28, Malatya - placeholder coords
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3195.6672346789!2d38.29!3d38.35!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzjCsDIxJzAwLjAiTiAzOMKwMTcnMjQuMCJF!5e0!3m2!1sen!2str!4v1600000000000!5m2!1sen!2str"
+                            src="https://maps.google.com/maps?q=Yesiltepe+Yolu+No:28,Yesilyurt,Malatya&t=&z=15&ie=UTF8&iwloc=&output=embed"
                             width="100%"
                             height="100%"
                             style={{ border: 0 }}
                             allowFullScreen
                             loading="lazy"
-                            className="grayscale opacity-70 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700 absolute inset-0"
+                            className="grayscale opacity-70 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700 absolute inset-0 pointer-events-none"
                         ></iframe>
-                        <div className="absolute inset-0 pointer-events-none border border-white/10" />
                     </div>
                 </div>
             </div>
